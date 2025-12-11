@@ -165,7 +165,7 @@ kubectl get nodes
 ### Step 2: Clone Deployment Repository
 
 
-### Step 3: Deploy ConfigMaps and Secrets
+### Step 3: Deploy ConfigMaps 
 
 ```bash
 # Deploy RabbitMQ configuration
