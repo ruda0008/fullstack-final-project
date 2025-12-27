@@ -1,41 +1,46 @@
-
-
 # Cloud-Native Microservices Platform
 
-## Update (Dec 2025): The CI/CD pipeline has been upgraded to a "Golden Level" `DevSecOps` workflow.
+###  Update (Dec 2025): DevSecOps Transformation
 
- Moving beyond standard automation, this project now implements a "Broken Build Policy" for security. The pipeline automatically blocks any deployment that does not pass strict compliance checks, ensuring Defense in Depth for both the application code and the infrastructure.
+The CI/CD pipeline has been upgraded to a **"Golden Level" DevSecOps workflow**.
 
-Gate,Tool,Type,Purpose
-Gate 1,SonarCloud : SAST (Static Analysis),"Scans source code for bugs, vulnerabilities, before compilation."
-Gate 2, Trivy : Container Security,Scans the Docker Image for OS-level vulnerabilities (CVEs) and insecure dependencies
+Moving beyond standard automation, this project now implements a strict **"Broken Build Policy."** The pipeline automatically blocks any deployment that does not pass security compliance checks, ensuring **Defense in Depth** for both the application code and the infrastructure.
 
-## How it Works
-1. Code Commit: Developer pushes code to main.
+###  The Security Gates
 
-2. SonarCloud Scan: Checks for logic errors and hardcoded secrets.
+| Gate | Tool | Type | Purpose |
+| --- | --- | --- | --- |
+| **Gate 1** | **SonarCloud** | SAST (Static Analysis) | Scans **source code** for bugs, vulnerabilities, and code smells before compilation. |
+| **Gate 2** | **Trivy** | Container Security | Scans the **Docker Image** for OS-level vulnerabilities (CVEs) and insecure dependencies. |
 
--  If failed: `Pipeline stops` immediately.
+### ⚙️ How it Works
 
-3. Docker Build: Image is built locally.
+1. **Code Commit:** Developer pushes code to the `main` branch.
+2. **SonarCloud Scan:** Analyzes code for logic errors and hardcoded secrets.
+* 🔴 **If failed:** The pipeline stops immediately.
 
-4. Trivy Scan: The image is tested against the database of known CVEs.
 
-- Scenario: If the base image is golang:1.22.5 (which has known flaws), Trivy detects CVE-2024-45337.
+3. **Docker Build:** The container image is built locally.
+4. **Trivy Scan:** The image is tested against the database of known CVEs.
+* *Scenario:* If the base image is `golang:1.22.5` (which has known flaws), Trivy detects `CVE-2024-45337`.
+* 🔴 **Action:** The pipeline **FAILS**. Deployment is blocked.
 
-- Action: The pipeline FAILS. Deployment is blocked.
 
-5. Deployment: Only occurs if both gates return a "Clean" status.
+5. **Deployment:** Only occurs if **both** gates return a "Clean" status.
 
 <img width="1024" height="376" alt="Screenshot 2025-12-27 at 5 22 06 PM" src="https://github.com/user-attachments/assets/7dd85d6b-38a0-4a87-8e3a-21004235b783" />
 
 
-##  Demo Video
+*Above: The pipeline correctly blocking a deployment due to a Critical Vulnerability detected by Trivy.*
 
-**Watch the Full Demo on YouTube**
-- `original`]: https://youtu.be/iKE3WCEGcmk
+---
 
-- `Updated` SonarQube and Trivy Security Checks : https://youtu.be/OGejAhiil9Q
+###  Project Demos
+
+| Version | Description | Link |
+| --- | --- | --- |
+| **v2.0 (New)** | **DevSecOps Security Upgrade** | **[Watch the Security Demo](https://www.google.com/search?q=LINK_TO_YOUR_NEW_VIDEO)** |
+| **v1.0** | **Original Microservices Architecture** | **[Watch the Full Architecture Demo](https://youtu.be/iKE3WCEGcmk)** |
 
 
 
