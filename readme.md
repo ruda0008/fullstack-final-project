@@ -4,13 +4,13 @@
 
 ## Update (Dec 2025): The CI/CD pipeline has been upgraded to a "Golden Level" `DevSecOps` workflow.
 
-- Moving beyond standard automation, this project now implements a "Broken Build Policy" for security. The pipeline automatically blocks any deployment that does not pass strict compliance checks, ensuring Defense in Depth for both the application code and the infrastructure.
+ Moving beyond standard automation, this project now implements a "Broken Build Policy" for security. The pipeline automatically blocks any deployment that does not pass strict compliance checks, ensuring Defense in Depth for both the application code and the infrastructure.
 
-- Gate,Tool,Type,Purpose
+Gate,Tool,Type,Purpose
 Gate 1,SonarCloud : SAST (Static Analysis),"Scans source code for bugs, vulnerabilities, before compilation."
 Gate 2, Trivy : Container Security,Scans the Docker Image for OS-level vulnerabilities (CVEs) and insecure dependencies
 
-- How it Works
+## How it Works
 1. Code Commit: Developer pushes code to main.
 
 2. SonarCloud Scan: Checks for logic errors and hardcoded secrets.
